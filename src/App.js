@@ -6,20 +6,29 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      idol: []
+      political: [
+        {name:'',nickname:'',party:''}
+      ],
     }
   }
 
   componentDidMount() {
     this.setState({
-      idol:['mobile','bnk48','b3'],
+      political: [
+        {name: 'Abhisit', nickname: 'Mark', party: 'Democrat'},
+        {name:'Sudarat',nickname:'Nhoi',party:'PhuerThai'}
+      ]
     })
   }
 
   render() {
+  let political = this.state.political
+  let politicInfo = political.map((member) => 
+    <li>Name: {member.name}  Nickname: {member.nickname}  Party: {member.party}</li>
+    )
     return (
       <div>
-        <h3>Idol: {this.state.idol}</h3>
+        <h3>Political People: {politicInfo} </h3>
       </div>
     );
   }

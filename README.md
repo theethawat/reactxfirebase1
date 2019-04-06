@@ -1,3 +1,46 @@
+# React x Firebase
+## Basic File Randering
+### Rendering State Stucture
+* Declare the type of component in state inside class
+    ```
+    constructor(props) {
+    super(props)
+    this.state = {
+      political: [
+        {name:'',nickname:'',party:''}
+      ],
+    }
+  }
+    ```
+* Using `ComponentDidMount()` to set the state value
+    ```
+    componentDidMount() {
+    this.setState({
+      political: [
+        {name: 'Abhisit', nickname: 'Mark', party: 'Democrat'},
+        {name:'Sudarat',nickname:'Nhoi',party:'PhuerThai'}
+      ]
+    })
+    }
+    ```
+* In render() make the variable to keep HTML rendered of mapping value 
+* Then map structure inside 'How they will show in HTML' using map Syntax like in [React Doc](https://reactjs.org/docs/lists-and-keys.html)
+    ```
+    let political = this.state.political
+    let politicInfo = political.map((member) => 
+    <li>Name: {member.name}  Nickname: {member.nickname}  Party: {member.party}</li>
+    )
+    ```
+* Finally let them show on return
+    ```
+     return (
+      <div>
+        <h3>Political People: {politicInfo} </h3>
+      </div>
+    );
+    ```
+
+# Create-React-App Readme
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
