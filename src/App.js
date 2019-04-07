@@ -32,7 +32,7 @@ class App extends Component {
         console.log(childValue)
 
         this.setState({
-          political: this.state.political.push(childValue)
+          political: snapshot.val()
         })
         
       })
@@ -56,7 +56,7 @@ class App extends Component {
   render() {
         let political = this.state.political
 
-    let politicInfo = political.pop((member) =>
+    let politicInfo = political.map((member) =>
           <li ><b>Name:</b> {member.name}  <b>Nickname:</b> {member.nickname}  <b>Party:</b> {member.party} <b>Age:</b> {member.age}</li>
         )
     return(
