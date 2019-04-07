@@ -39,6 +39,18 @@
       </div>
     );
     ```
+### Fetching from Firebase Realtime Database
+  ```
+   //Fetching From Database
+    let political = db.database().ref("politician")
+    political.on('value', snapshot => {
+      snapshot.forEach(() => {
+        this.setState({
+          political: snapshot.val()     //Set value to state
+        })
+      })
+    })
+  ```
 
 # Create-React-App Readme
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
