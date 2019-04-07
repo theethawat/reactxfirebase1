@@ -3,12 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import firebase from 'firebase';
 let config = {
-  apiKey: "AIzaSyCRsfG6PU2w3nqIQDov0MYO-4nYsAb7FvI",
+  apiKey: " ",
   authDomain: "fir-politic.firebaseapp.com",
   databaseURL: "https://fir-politic.firebaseio.com",
-  projectId: "fir-politic",
-  storageBucket: "fir-politic.appspot.com",
-  messagingSenderId: "212092087992"
+  projectId: " ",
+  storageBucket: " ",
+  messagingSenderId: " "
 };
 firebase.initializeApp(config);
 let db = firebase;
