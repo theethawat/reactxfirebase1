@@ -18,9 +18,10 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      political: [
+      political: Array(
         { name: '', nickname: '', party: '', age: '' }
-      ],
+      ),
+      key:''
     }
     let political = db.database().ref("politician")
     political.on('value', snapshot => {
@@ -31,22 +32,32 @@ class App extends Component {
         console.log(childValue)
 
         this.setState({
-          political: [childValue]
+          political: this.state.political.push(childValue)
         })
+        
       })
-    })}
-
+      // let value = snapshot.exportVal()
+      // console.log(value)
+      // this.setState({
+      //   political: [value],
+      //   key:snapshot.key
+      // })
+    })
+    console.log('This state value are')
+    console.log(this.state.political)
+   }
 
 
   // componentDidMount() {
-  //   
+   
+    
   // }
 
   render() {
         let political = this.state.political
 
-    let politicInfo = political.map((member) =>
-          <li><b>Name:</b> {member.name}  <b>Nickname:</b> {member.nickname}  <b>Party:</b> {member.party} <b>Age:</b> {member.age}</li>
+    let politicInfo = political.pop((member) =>
+          <li ><b>Name:</b> {member.name}  <b>Nickname:</b> {member.nickname}  <b>Party:</b> {member.party} <b>Age:</b> {member.age}</li>
         )
     return(
       <div>
