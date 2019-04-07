@@ -21,48 +21,40 @@ class App extends Component {
       political: Array(
         { name: '', nickname: '', party: '', age: '' }
       ),
-      key:''
     }
+
+    //Fetching From Database
     let political = db.database().ref("politician")
     political.on('value', snapshot => {
-      snapshot.forEach(childSnapshot => {
-        let childKey = childSnapshot.key
-        let childValue = childSnapshot.val()
-        console.log(childKey)
-        console.log(childValue)
-
+      snapshot.forEach(() => {
         this.setState({
-          political: snapshot.val()
+          political: snapshot.val()     //Set value to state
         })
-        
       })
-      // let value = snapshot.exportVal()
-      // console.log(value)
-      // this.setState({
-      //   political: [value],
-      //   key:snapshot.key
-      // })
     })
+
+    //Console Check
     console.log('This state value are')
     console.log(this.state.political)
-   }
 
+  }
 
   // componentDidMount() {
-   
-    
+
+
   // }
 
   render() {
-        let political = this.state.political
-
+    //Prepare to show
+    let political = this.state.political
     let politicInfo = political.map((member) =>
-          <li ><b>Name:</b> {member.name}  <b>Nickname:</b> {member.nickname}  <b>Party:</b> {member.party} <b>Age:</b> {member.age}</li>
-        )
-    return(
+      <li ><b>Name:</b> {member.name}  <b>Nickname:</b> {member.nickname}  <b>Party:</b> {member.party} <b>Age:</b> {member.age}</li>
+    )
+    //Showing
+    return (
       <div>
-      <h3>Political People: </h3>
-        { politicInfo }
+        <h3>Political People: </h3>
+        {politicInfo}
       </div >
     );
   }
